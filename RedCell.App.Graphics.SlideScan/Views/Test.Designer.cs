@@ -330,7 +330,6 @@
             this.LiveView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LiveView.CameraDevice = null;
             this.LiveView.Location = new System.Drawing.Point(492, 24);
             this.LiveView.Name = "LiveView";
             this.LiveView.Size = new System.Drawing.Size(634, 467);

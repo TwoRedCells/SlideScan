@@ -40,17 +40,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\CameraControl.Core.dll</HintPath>
     </Reference>
-    <Reference Include="CameraControl.Devices, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\CameraControl.Devices.dll</HintPath>
-    </Reference>
     <Reference Include="CameraControl.Plugins, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\CameraControl.Plugins.dll</HintPath>
-    </Reference>
-    <Reference Include="FTD2XX_NET, Version=1.0.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\FTD2XX_NET.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
@@ -81,10 +73,18 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Set.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Projector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RelayBoard.cs" />
+    <Compile Include="RelayBoardException.cs" />
     <Compile Include="Views\LiveView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -93,6 +93,12 @@
     </Compile>
     <Compile Include="Views\Relays.Designer.cs">
       <DependentUpon>Relays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ScanView.Designer.cs">
+      <DependentUpon>ScanView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Test.cs">
       <SubType>Form</SubType>
@@ -106,26 +112,19 @@
     <Compile Include="Views\SettingsView.Designer.cs">
       <DependentUpon>SettingsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SetView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\SetView.Designer.cs">
-      <DependentUpon>SetView.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Views\Relays.resx">
       <DependentUpon>Relays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ScanView.resx">
+      <DependentUpon>ScanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
@@ -148,12 +147,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\eject-128.png" />
+    <Content Include="Assets\end-128.png" />
+    <Content Include="Assets\fast_forward-128.png" />
+    <Content Include="Assets\bulb.png" />
+    <Content Include="Assets\pause-128.png" />
+    <Content Include="Assets\play-128.png" />
+    <Content Include="Assets\record-128.png" />
+    <Content Include="Assets\rewind-128.png" />
+    <Content Include="Assets\shuffle-128.png" />
+    <Content Include="Assets\skip_to_start-128.png" />
+    <Content Include="Assets\stop-128.png" />
     <Content Include="lib\CameraControl.Core.dll" />
     <Content Include="lib\CameraControl.Devices.dll" />
     <Content Include="lib\CameraControl.Plugins.dll" />
-    <Content Include="lib\FTD2XX_NET.dll" />
     <Content Include="lib\MdiTabControl.dll" />
     <Content Include="license\ftdi.txt" />
+    <None Include="Resources\bulb.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\digiCamControl\CameraControl.Devices\CameraControl.Devices.csproj">
+      <Project>{e8572d8b-c987-4d20-bd88-1f8925a64a82}</Project>
+      <Name>CameraControl.Devices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

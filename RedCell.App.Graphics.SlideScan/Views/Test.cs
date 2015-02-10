@@ -24,8 +24,8 @@ namespace RedCell.App.Graphics.SlideScan
             CameraGroupBox.Enabled = true;
             try 
             { 
-                //Camera.Initialize();
-                LiveView.Initialize();
+                Camera.Initialize();
+                LiveView.Initialize(Camera.GetDevice());
 
                 //  Configure ISO slider
                 _isos = Camera.GetIsos();

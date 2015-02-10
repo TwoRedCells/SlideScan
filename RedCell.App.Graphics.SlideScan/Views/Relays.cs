@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 using RedCell.Devices;
 
 namespace RedCell.App.Graphics.SlideScan
@@ -21,9 +22,19 @@ namespace RedCell.App.Graphics.SlideScan
                 boxes[i].Tag = relays[i];
                 boxes[i].CheckedChanged += Relays_CheckedChanged;
             }
+            Initialize();
+        }
 
-            RelayBoard.Initialize();
-
+        public async void Initialize()
+        {
+            try 
+            { 
+                await RelayBoard.InitializeAsync(); 
+            }
+            catch (RelayBoardException ex)
+            {
+                MessageBox.Show(ex.Message, "RelayBoardException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         void Relays_CheckedChanged(object sender, EventArgs e)

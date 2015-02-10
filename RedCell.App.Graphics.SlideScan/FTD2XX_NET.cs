@@ -26,7 +26,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.IO;
 
-namespace FTD2XX_NET
+namespace RedCell.Devices
 {
 	/// <summary>
 	/// Class wrapper for FTD2XX.DLL
@@ -2010,9 +2010,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_CreateDeviceInfoList != IntPtr.Zero)
@@ -2024,7 +2024,7 @@ namespace FTD2XX_NET
 			}
 			else
 			{
-				MessageBox.Show("Failed to load function FT_CreateDeviceInfoList.");
+				throw new RelayBoardException("Failed to load function FT_CreateDeviceInfoList.");
 			}
 			return ftStatus;
 
@@ -2047,9 +2047,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_CreateDeviceInfoList != IntPtr.Zero) & (pFT_GetDeviceInfoDetail != IntPtr.Zero))
@@ -2097,11 +2097,11 @@ namespace FTD2XX_NET
 			{
 				if (pFT_CreateDeviceInfoList == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_CreateDeviceInfoList.");
+					throw new RelayBoardException("Failed to load function FT_CreateDeviceInfoList.");
 				}
 				if (pFT_GetDeviceInfoDetail == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetDeviceInfoListDetail.");
+					throw new RelayBoardException("Failed to load function FT_GetDeviceInfoListDetail.");
 				}
 			}
 			return ftStatus;
@@ -2124,9 +2124,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_Open != IntPtr.Zero) & (pFT_SetDataCharacteristics != IntPtr.Zero) & (pFT_SetFlowControl != IntPtr.Zero) & (pFT_SetBaudRate != IntPtr.Zero))
@@ -2164,19 +2164,19 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Open == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Open.");
+					throw new RelayBoardException("Failed to load function FT_Open.");
 				}
 				if (pFT_SetDataCharacteristics == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetDataCharacteristics.");
+					throw new RelayBoardException("Failed to load function FT_SetDataCharacteristics.");
 				}
 				if (pFT_SetFlowControl == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetFlowControl.");
+					throw new RelayBoardException("Failed to load function FT_SetFlowControl.");
 				}
 				if (pFT_SetBaudRate == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetBaudRate.");
+					throw new RelayBoardException("Failed to load function FT_SetBaudRate.");
 				}
 			}
 			return ftStatus;
@@ -2198,9 +2198,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_OpenEx != IntPtr.Zero) & (pFT_SetDataCharacteristics != IntPtr.Zero) & (pFT_SetFlowControl != IntPtr.Zero) & (pFT_SetBaudRate != IntPtr.Zero))
@@ -2238,19 +2238,19 @@ namespace FTD2XX_NET
 			{
 				if (pFT_OpenEx == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_OpenEx.");
+					throw new RelayBoardException("Failed to load function FT_OpenEx.");
 				}
 				if (pFT_SetDataCharacteristics == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetDataCharacteristics.");
+					throw new RelayBoardException("Failed to load function FT_SetDataCharacteristics.");
 				}
 				if (pFT_SetFlowControl == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetFlowControl.");
+					throw new RelayBoardException("Failed to load function FT_SetFlowControl.");
 				}
 				if (pFT_SetBaudRate == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetBaudRate.");
+					throw new RelayBoardException("Failed to load function FT_SetBaudRate.");
 				}
 			}
 			return ftStatus;
@@ -2272,9 +2272,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_OpenEx != IntPtr.Zero) & (pFT_SetDataCharacteristics != IntPtr.Zero) & (pFT_SetFlowControl != IntPtr.Zero) & (pFT_SetBaudRate != IntPtr.Zero))
@@ -2312,19 +2312,19 @@ namespace FTD2XX_NET
 			{
 				if (pFT_OpenEx == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_OpenEx.");
+					throw new RelayBoardException("Failed to load function FT_OpenEx.");
 				}
 				if (pFT_SetDataCharacteristics == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetDataCharacteristics.");
+					throw new RelayBoardException("Failed to load function FT_SetDataCharacteristics.");
 				}
 				if (pFT_SetFlowControl == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetFlowControl.");
+					throw new RelayBoardException("Failed to load function FT_SetFlowControl.");
 				}
 				if (pFT_SetBaudRate == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetBaudRate.");
+					throw new RelayBoardException("Failed to load function FT_SetBaudRate.");
 				}
 			}
 			return ftStatus;
@@ -2346,9 +2346,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_OpenEx != IntPtr.Zero) & (pFT_SetDataCharacteristics != IntPtr.Zero) & (pFT_SetFlowControl != IntPtr.Zero) & (pFT_SetBaudRate != IntPtr.Zero))
@@ -2386,19 +2386,19 @@ namespace FTD2XX_NET
 			{
 				if (pFT_OpenEx == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_OpenEx.");
+					throw new RelayBoardException("Failed to load function FT_OpenEx.");
 				}
 				if (pFT_SetDataCharacteristics == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetDataCharacteristics.");
+					throw new RelayBoardException("Failed to load function FT_SetDataCharacteristics.");
 				}
 				if (pFT_SetFlowControl == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetFlowControl.");
+					throw new RelayBoardException("Failed to load function FT_SetFlowControl.");
 				}
 				if (pFT_SetBaudRate == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetBaudRate.");
+					throw new RelayBoardException("Failed to load function FT_SetBaudRate.");
 				}
 			}
 			return ftStatus;
@@ -2418,9 +2418,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Close != IntPtr.Zero)
@@ -2439,7 +2439,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Close == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Close.");
+					throw new RelayBoardException("Failed to load function FT_Close.");
 				}
 			}
 			return ftStatus;
@@ -2462,9 +2462,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Read != IntPtr.Zero)
@@ -2488,7 +2488,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Read.");
+					throw new RelayBoardException("Failed to load function FT_Read.");
 				}
 			}
 			return ftStatus;
@@ -2510,9 +2510,9 @@ namespace FTD2XX_NET
 			// As dataBuffer is an OUT parameter, needs to be assigned before returning
 			dataBuffer = string.Empty;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Read != IntPtr.Zero)
@@ -2536,7 +2536,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Read.");
+					throw new RelayBoardException("Failed to load function FT_Read.");
 				}
 			}
 			return ftStatus;
@@ -2558,9 +2558,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Write != IntPtr.Zero)
@@ -2577,7 +2577,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Write == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Write.");
+					throw new RelayBoardException("Failed to load function FT_Write.");
 				}
 			}
 			return ftStatus;
@@ -2596,9 +2596,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Write != IntPtr.Zero)
@@ -2615,7 +2615,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Write == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Write.");
+					throw new RelayBoardException("Failed to load function FT_Write.");
 				}
 			}
 			return ftStatus;
@@ -2634,9 +2634,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Write != IntPtr.Zero)
@@ -2656,7 +2656,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Write == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Write.");
+					throw new RelayBoardException("Failed to load function FT_Write.");
 				}
 			}
 			return ftStatus;
@@ -2675,9 +2675,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Write != IntPtr.Zero)
@@ -2697,7 +2697,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Write == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Write.");
+					throw new RelayBoardException("Failed to load function FT_Write.");
 				}
 			}
 			return ftStatus;
@@ -2716,9 +2716,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_ResetDevice != IntPtr.Zero)
@@ -2735,7 +2735,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_ResetDevice == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_ResetDevice.");
+					throw new RelayBoardException("Failed to load function FT_ResetDevice.");
 				}
 			}
 			return ftStatus;
@@ -2755,9 +2755,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Purge != IntPtr.Zero)
@@ -2774,7 +2774,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Purge == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Purge.");
+					throw new RelayBoardException("Failed to load function FT_Purge.");
 				}
 			}
 			return ftStatus;
@@ -2796,9 +2796,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetEventNotification != IntPtr.Zero)
@@ -2815,7 +2815,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetEventNotification == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetEventNotification.");
+					throw new RelayBoardException("Failed to load function FT_SetEventNotification.");
 				}
 			}
 			return ftStatus;
@@ -2834,9 +2834,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_StopInTask != IntPtr.Zero)
@@ -2853,7 +2853,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_StopInTask == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_StopInTask.");
+					throw new RelayBoardException("Failed to load function FT_StopInTask.");
 				}
 			}
 			return ftStatus;
@@ -2872,9 +2872,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_RestartInTask != IntPtr.Zero)
@@ -2891,7 +2891,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_RestartInTask == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_RestartInTask.");
+					throw new RelayBoardException("Failed to load function FT_RestartInTask.");
 				}
 			}
 			return ftStatus;
@@ -2910,9 +2910,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_ResetPort != IntPtr.Zero)
@@ -2929,7 +2929,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_ResetPort == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_ResetPort.");
+					throw new RelayBoardException("Failed to load function FT_ResetPort.");
 				}
 			}
 			return ftStatus;
@@ -2949,9 +2949,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_CyclePort != IntPtr.Zero) & (pFT_Close != IntPtr.Zero))
@@ -2978,11 +2978,11 @@ namespace FTD2XX_NET
 			{
 				if (pFT_CyclePort == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_CyclePort.");
+					throw new RelayBoardException("Failed to load function FT_CyclePort.");
 				}
 				if (pFT_Close == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Close.");
+					throw new RelayBoardException("Failed to load function FT_Close.");
 				}
 			}
 			return ftStatus;
@@ -3001,9 +3001,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Rescan != IntPtr.Zero)
@@ -3017,7 +3017,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Rescan == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Rescan.");
+					throw new RelayBoardException("Failed to load function FT_Rescan.");
 				}
 			}
 			return ftStatus;
@@ -3039,9 +3039,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_Reload != IntPtr.Zero)
@@ -3055,7 +3055,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_Reload == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_Reload.");
+					throw new RelayBoardException("Failed to load function FT_Reload.");
 				}
 			}
 			return ftStatus;
@@ -3085,9 +3085,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetBitMode != IntPtr.Zero)
@@ -3199,7 +3199,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetBitMode == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetBitMode.");
+					throw new RelayBoardException("Failed to load function FT_SetBitMode.");
 				}
 			}
 			return ftStatus;
@@ -3219,9 +3219,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetBitMode != IntPtr.Zero)
@@ -3238,7 +3238,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetBitMode == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetBitMode.");
+					throw new RelayBoardException("Failed to load function FT_GetBitMode.");
 				}
 			}
 			return ftStatus;
@@ -3259,9 +3259,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_ReadEE != IntPtr.Zero)
@@ -3278,7 +3278,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_ReadEE == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_ReadEE.");
+					throw new RelayBoardException("Failed to load function FT_ReadEE.");
 				}
 			}
 			return ftStatus;
@@ -3299,9 +3299,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_WriteEE != IntPtr.Zero)
@@ -3318,7 +3318,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_WriteEE == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_WriteEE.");
+					throw new RelayBoardException("Failed to load function FT_WriteEE.");
 				}
 			}
 			return ftStatus;
@@ -3339,9 +3339,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EraseEE != IntPtr.Zero)
@@ -3368,7 +3368,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EraseEE == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EraseEE.");
+					throw new RelayBoardException("Failed to load function FT_EraseEE.");
 				}
 			}
 			return ftStatus;
@@ -3390,9 +3390,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Read != IntPtr.Zero)
@@ -3457,7 +3457,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Read.");
+					throw new RelayBoardException("Failed to load function FT_EE_Read.");
 				}
 			}
 			return ftStatus;
@@ -3479,9 +3479,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Read != IntPtr.Zero)
@@ -3556,7 +3556,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Read.");
+					throw new RelayBoardException("Failed to load function FT_EE_Read.");
 				}
 			}
 			return ftStatus;
@@ -3578,9 +3578,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Read != IntPtr.Zero)
@@ -3660,7 +3660,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Read.");
+					throw new RelayBoardException("Failed to load function FT_EE_Read.");
 				}
 			}
 			return ftStatus;
@@ -3682,9 +3682,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Read != IntPtr.Zero)
@@ -3768,7 +3768,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Read.");
+					throw new RelayBoardException("Failed to load function FT_EE_Read.");
 				}
 			}
 			return ftStatus;
@@ -3790,9 +3790,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Read != IntPtr.Zero)
@@ -3875,7 +3875,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Read.");
+					throw new RelayBoardException("Failed to load function FT_EE_Read.");
 				}
 			}
 			return ftStatus;
@@ -3897,9 +3897,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Read != IntPtr.Zero)
@@ -3987,7 +3987,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Read.");
+					throw new RelayBoardException("Failed to load function FT_EE_Read.");
 				}
 			}
 			return ftStatus;
@@ -4009,9 +4009,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EEPROM_Read != IntPtr.Zero)
@@ -4120,7 +4120,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Read == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Read.");
+					throw new RelayBoardException("Failed to load function FT_EE_Read.");
 				}
 			}
 			return ftStatus;
@@ -4143,9 +4143,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Program != IntPtr.Zero)
@@ -4229,7 +4229,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Program == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Program.");
+					throw new RelayBoardException("Failed to load function FT_EE_Program.");
 				}
 			}
 			return ftStatus;
@@ -4253,9 +4253,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Program != IntPtr.Zero)
@@ -4349,7 +4349,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Program == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Program.");
+					throw new RelayBoardException("Failed to load function FT_EE_Program.");
 				}
 			}
 			return ftStatus;
@@ -4373,9 +4373,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Program != IntPtr.Zero)
@@ -4477,7 +4477,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Program == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Program.");
+					throw new RelayBoardException("Failed to load function FT_EE_Program.");
 				}
 			}
 			return ftStatus;
@@ -4501,9 +4501,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Program != IntPtr.Zero)
@@ -4605,7 +4605,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Program == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Program.");
+					throw new RelayBoardException("Failed to load function FT_EE_Program.");
 				}
 			}
 			return ftStatus;
@@ -4629,9 +4629,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Program != IntPtr.Zero)
@@ -4732,7 +4732,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Program == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Program.");
+					throw new RelayBoardException("Failed to load function FT_EE_Program.");
 				}
 			}
 			return ftStatus;
@@ -4756,9 +4756,9 @@ namespace FTD2XX_NET
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 			FT_ERROR ftErrorCondition = FT_ERROR.FT_NO_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_Program != IntPtr.Zero)
@@ -4864,7 +4864,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_Program == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_Program.");
+					throw new RelayBoardException("Failed to load function FT_EE_Program.");
 				}
 			}
 			return ftStatus;
@@ -4890,9 +4890,9 @@ namespace FTD2XX_NET
 
 			byte[] manufacturer, manufacturerID, description, serialNumber;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EEPROM_Program != IntPtr.Zero) 
@@ -5026,9 +5026,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_EE_UASize != IntPtr.Zero) & (pFT_EE_UARead != IntPtr.Zero))
@@ -5055,11 +5055,11 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_UASize == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_UASize.");
+					throw new RelayBoardException("Failed to load function FT_EE_UASize.");
 				}
 				if (pFT_EE_UARead == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_UARead.");
+					throw new RelayBoardException("Failed to load function FT_EE_UARead.");
 				}
 			}
 			return ftStatus;
@@ -5108,11 +5108,11 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_UASize == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_UASize.");
+					throw new RelayBoardException("Failed to load function FT_EE_UASize.");
 				}
 				if (pFT_EE_UAWrite == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_UAWrite.");
+					throw new RelayBoardException("Failed to load function FT_EE_UAWrite.");
 				}
 			}
 			return ftStatus;
@@ -5132,9 +5132,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetDeviceInfo != IntPtr.Zero)
@@ -5157,7 +5157,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetDeviceInfo == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetDeviceInfo.");
+					throw new RelayBoardException("Failed to load function FT_GetDeviceInfo.");
 				}
 			}
 			return ftStatus;
@@ -5177,9 +5177,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetDeviceInfo != IntPtr.Zero)
@@ -5200,7 +5200,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetDeviceInfo == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetDeviceInfo.");
+					throw new RelayBoardException("Failed to load function FT_GetDeviceInfo.");
 				}
 			}
 			return ftStatus;
@@ -5222,10 +5222,9 @@ namespace FTD2XX_NET
 
 			Description = String.Empty;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
-
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetDeviceInfo != IntPtr.Zero)
@@ -5249,7 +5248,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetDeviceInfo == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetDeviceInfo.");
+					throw new RelayBoardException("Failed to load function FT_GetDeviceInfo.");
 				}
 			}
 			return ftStatus;
@@ -5271,10 +5270,9 @@ namespace FTD2XX_NET
 
 			SerialNumber = String.Empty;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
-
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetDeviceInfo != IntPtr.Zero)
@@ -5298,7 +5296,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetDeviceInfo == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetDeviceInfo.");
+					throw new RelayBoardException("Failed to load function FT_GetDeviceInfo.");
 				}
 			}
 			return ftStatus;
@@ -5318,9 +5316,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetQueueStatus != IntPtr.Zero)
@@ -5337,7 +5335,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetQueueStatus == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetQueueStatus.");
+					throw new RelayBoardException("Failed to load function FT_GetQueueStatus.");
 				}
 			}
 			return ftStatus;
@@ -5357,9 +5355,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetStatus != IntPtr.Zero)
@@ -5379,7 +5377,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetStatus == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetStatus.");
+					throw new RelayBoardException("Failed to load function FT_GetStatus.");
 				}
 			}
 			return ftStatus;
@@ -5399,9 +5397,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetStatus != IntPtr.Zero)
@@ -5421,7 +5419,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetStatus == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetStatus.");
+					throw new RelayBoardException("Failed to load function FT_GetStatus.");
 				}
 			}
 			return ftStatus;
@@ -5443,30 +5441,24 @@ namespace FTD2XX_NET
 
 			// If the DLL hasn't been loaded, just return here
 			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetModemStatus != IntPtr.Zero)
 			{
 				tFT_GetModemStatus FT_GetModemStatus = (tFT_GetModemStatus)Marshal.GetDelegateForFunctionPointer(pFT_GetModemStatus, typeof(tFT_GetModemStatus));
-
 				UInt32 ModemLineStatus = 0;
 
 				if (ftHandle != IntPtr.Zero)
-				{
-					// Call FT_GetModemStatus
 					ftStatus = FT_GetModemStatus(ftHandle, ref ModemLineStatus);
 
-				}
-				ModemStatus = Convert.ToByte(ModemLineStatus & 0x000000FF);
+                ModemStatus = Convert.ToByte(ModemLineStatus & 0x000000FF);
 			}
-			else
+			else if (pFT_GetModemStatus == IntPtr.Zero)
 			{
-				if (pFT_GetModemStatus == IntPtr.Zero)
-				{
-					MessageBox.Show("Failed to load function FT_GetModemStatus.");
-				}
+                throw new RelayBoardException("Cannot get modem status.");
 			}
+
 			return ftStatus;
 		}
 
@@ -5484,9 +5476,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetModemStatus != IntPtr.Zero)
@@ -5502,14 +5494,11 @@ namespace FTD2XX_NET
 				}
 				LineStatus = Convert.ToByte((ModemLineStatus >> 8) & 0x000000FF);
 			}
-			else
-			{
-				if (pFT_GetModemStatus == IntPtr.Zero)
-				{
-					MessageBox.Show("Failed to load function FT_GetModemStatus.");
-				}
-			}
-			return ftStatus;
+            else if (pFT_GetModemStatus == IntPtr.Zero)
+            {
+                throw new RelayBoardException("Cannot get line status.");
+            }
+            return ftStatus;
 		}
 
 		//**************************************************************************
@@ -5526,9 +5515,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetBaudRate != IntPtr.Zero)
@@ -5545,7 +5534,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetBaudRate == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetBaudRate.");
+					throw new RelayBoardException("Failed to load function FT_SetBaudRate.");
 				}
 			}
 			return ftStatus;
@@ -5567,9 +5556,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetDataCharacteristics != IntPtr.Zero)
@@ -5586,7 +5575,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetDataCharacteristics == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetDataCharacteristics.");
+					throw new RelayBoardException("Failed to load function FT_SetDataCharacteristics.");
 				}
 			}
 			return ftStatus;
@@ -5608,9 +5597,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetFlowControl != IntPtr.Zero)
@@ -5627,7 +5616,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetFlowControl == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetFlowControl.");
+					throw new RelayBoardException("Failed to load function FT_SetFlowControl.");
 				}
 			}
 			return ftStatus;
@@ -5647,9 +5636,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_SetRts != IntPtr.Zero) & (pFT_ClrRts != IntPtr.Zero))
@@ -5675,11 +5664,11 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetRts == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetRts.");
+					throw new RelayBoardException("Failed to load function FT_SetRts.");
 				}
 				if (pFT_ClrRts == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_ClrRts.");
+					throw new RelayBoardException("Failed to load function FT_ClrRts.");
 				}
 			}
 			return ftStatus;
@@ -5699,9 +5688,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_SetDtr != IntPtr.Zero) & (pFT_ClrDtr != IntPtr.Zero))
@@ -5727,11 +5716,11 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetDtr == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetDtr.");
+					throw new RelayBoardException("Failed to load function FT_SetDtr.");
 				}
 				if (pFT_ClrDtr == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_ClrDtr.");
+					throw new RelayBoardException("Failed to load function FT_ClrDtr.");
 				}
 			}
 			return ftStatus;
@@ -5752,9 +5741,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetTimeouts != IntPtr.Zero)
@@ -5771,7 +5760,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetTimeouts == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetTimeouts.");
+					throw new RelayBoardException("Failed to load function FT_SetTimeouts.");
 				}
 			}
 			return ftStatus;
@@ -5791,9 +5780,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if ((pFT_SetBreakOn != IntPtr.Zero) & (pFT_SetBreakOff != IntPtr.Zero))
@@ -5819,11 +5808,11 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetBreakOn == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetBreakOn.");
+					throw new RelayBoardException("Failed to load function FT_SetBreakOn.");
 				}
 				if (pFT_SetBreakOff == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetBreakOff.");
+					throw new RelayBoardException("Failed to load function FT_SetBreakOff.");
 				}
 			}
 			return ftStatus;
@@ -5844,9 +5833,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetResetPipeRetryCount != IntPtr.Zero)
@@ -5863,7 +5852,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetResetPipeRetryCount == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetResetPipeRetryCount.");
+					throw new RelayBoardException("Failed to load function FT_SetResetPipeRetryCount.");
 				}
 			}
 			return ftStatus;
@@ -5883,9 +5872,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetDriverVersion != IntPtr.Zero)
@@ -5902,7 +5891,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetDriverVersion == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetDriverVersion.");
+					throw new RelayBoardException("Failed to load function FT_GetDriverVersion.");
 				}
 			}
 			return ftStatus;
@@ -5922,9 +5911,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetLibraryVersion != IntPtr.Zero)
@@ -5938,7 +5927,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetLibraryVersion == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetLibraryVersion.");
+					throw new RelayBoardException("Failed to load function FT_GetLibraryVersion.");
 				}
 			}
 			return ftStatus;
@@ -5958,9 +5947,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetDeadmanTimeout != IntPtr.Zero)
@@ -5977,7 +5966,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetDeadmanTimeout == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetDeadmanTimeout.");
+					throw new RelayBoardException("Failed to load function FT_SetDeadmanTimeout.");
 				}
 			}
 			return ftStatus;
@@ -5999,9 +5988,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetLatencyTimer != IntPtr.Zero)
@@ -6029,7 +6018,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetLatencyTimer == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetLatencyTimer.");
+					throw new RelayBoardException("Failed to load function FT_SetLatencyTimer.");
 				}
 			}
 			return ftStatus;
@@ -6049,9 +6038,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetLatencyTimer != IntPtr.Zero)
@@ -6068,7 +6057,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetLatencyTimer == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetLatencyTimer.");
+					throw new RelayBoardException("Failed to load function FT_GetLatencyTimer.");
 				}
 			}
 			return ftStatus;
@@ -6090,9 +6079,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetUSBParameters != IntPtr.Zero)
@@ -6111,7 +6100,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetUSBParameters == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetUSBParameters.");
+					throw new RelayBoardException("Failed to load function FT_SetUSBParameters.");
 				}
 			}
 			return ftStatus;
@@ -6134,9 +6123,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_SetChars != IntPtr.Zero)
@@ -6153,7 +6142,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_SetChars == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_SetChars.");
+					throw new RelayBoardException("Failed to load function FT_SetChars.");
 				}
 			}
 			return ftStatus;
@@ -6173,9 +6162,9 @@ namespace FTD2XX_NET
 			// Initialise ftStatus to something other than FT_OK
 			FT_STATUS ftStatus = FT_STATUS.FT_OTHER_ERROR;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_EE_UASize != IntPtr.Zero)
@@ -6191,7 +6180,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_EE_UASize == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_EE_UASize.");
+					throw new RelayBoardException("Failed to load function FT_EE_UASize.");
 				}
 			}
 			return ftStatus;
@@ -6214,9 +6203,9 @@ namespace FTD2XX_NET
 			// As ComPortName is an OUT paremeter, has to be assigned before returning
 			ComPortName = string.Empty;
 
-			// If the DLL hasn't been loaded, just return here
-			if (hFTD2XXDLL == IntPtr.Zero)
-				return ftStatus;
+            // If the DLL hasn't been loaded, just return here
+            if (hFTD2XXDLL == IntPtr.Zero)
+                throw new RelayBoardException("DLL not loaded.");
 
 			// Check for our required function pointers being set up
 			if (pFT_GetComPortNumber != IntPtr.Zero)
@@ -6246,7 +6235,7 @@ namespace FTD2XX_NET
 			{
 				if (pFT_GetComPortNumber == IntPtr.Zero)
 				{
-					MessageBox.Show("Failed to load function FT_GetComPortNumber.");
+					throw new RelayBoardException("Failed to load function FT_GetComPortNumber.");
 				}
 			}
 			return ftStatus;

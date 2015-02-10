@@ -58,13 +58,23 @@ namespace RedCell.App.Graphics.SlideScan
             }
         }
 
+        public async static Task CaptureAsync()
+        {
+            await Task.Run((Action)Capture);
+
+        }
+
         public static void Initialize()
         {
             ServiceProvider.Configure();
             var dm = ServiceProvider.DeviceManager;
+            dm.UseExperimentalDrivers = false;
             dm.ConnectToCamera();
             dm.PhotoCaptured += DeviceManager_PhotoCaptured;
+            Filename = "test.jpg";
         }
+
+        public static string Filename { get; set; }
 
         public static void SetIso(string iso)
         {
@@ -141,24 +151,26 @@ namespace RedCell.App.Graphics.SlideScan
 
         private async static Task PhotoCaptured(PhotoCapturedEventArgs e)
         {
-            try
-            {
-                string fileName = "test.jpg";
-                string tempFile = Path.GetTempFileName();
+            await Task.Run(() =>
+                {
+                    try
+                    {
+                        string tempFile = Path.GetTempFileName();
 
-                if (File.Exists(tempFile))
-                    File.Delete(tempFile);
+                        if (File.Exists(tempFile))
+                            File.Delete(tempFile);
 
-                e.CameraDevice.TransferFile(e.Handle, tempFile);
-                File.Copy(tempFile, fileName);
+                        e.CameraDevice.TransferFile(e.Handle, tempFile);
+                        File.Copy(tempFile, Filename, true);
 
-                if (File.Exists(tempFile))
-                    File.Delete(tempFile);
-            }
-            finally
-            {
-                e.CameraDevice.IsBusy = false;
-            }
+                        if (File.Exists(tempFile))
+                            File.Delete(tempFile);
+                    }
+                    finally
+                    {
+                        e.CameraDevice.IsBusy = false;
+                    }
+                });
         }
 
         public static ICameraDevice GetDevice()

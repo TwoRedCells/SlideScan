@@ -95,7 +95,7 @@
             // K04
             // 
             this.K04.AutoSize = true;
-            this.K04.Location = new System.Drawing.Point(12, 127);
+            this.K04.Location = new System.Drawing.Point(12, 81);
             this.K04.Name = "K04";
             this.K04.Size = new System.Drawing.Size(45, 17);
             this.K04.TabIndex = 5;
@@ -105,7 +105,7 @@
             // K05
             // 
             this.K05.AutoSize = true;
-            this.K05.Location = new System.Drawing.Point(12, 81);
+            this.K05.Location = new System.Drawing.Point(12, 104);
             this.K05.Name = "K05";
             this.K05.Size = new System.Drawing.Size(45, 17);
             this.K05.TabIndex = 5;
@@ -115,7 +115,7 @@
             // K06
             // 
             this.K06.AutoSize = true;
-            this.K06.Location = new System.Drawing.Point(12, 104);
+            this.K06.Location = new System.Drawing.Point(12, 127);
             this.K06.Name = "K06";
             this.K06.Size = new System.Drawing.Size(45, 17);
             this.K06.TabIndex = 6;
