@@ -44,17 +44,19 @@
             System.Windows.Forms.ToolStripMenuItem EditDeleteMenu;
             System.Windows.Forms.ToolStripMenuItem ToolsMenu;
             System.Windows.Forms.ToolStripMenuItem ToolsTestMenu;
-            System.Windows.Forms.ToolStripMenuItem ToolsScanMenu;
+            System.Windows.Forms.ToolStripMenuItem RelaysMenu;
             System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
             System.Windows.Forms.ToolStripMenuItem ToolsOptionsMenu;
             System.Windows.Forms.ToolStripMenuItem HelpMenu;
             System.Windows.Forms.ToolStripMenuItem AboutMenu;
-            System.Windows.Forms.ToolStripMenuItem RelaysMenu;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Tabby = new MdiTabControl.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileOpenMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ResetCameraMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ResetRelaysMeu = new System.Windows.Forms.ToolStripMenuItem();
             toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             FileMenu = new System.Windows.Forms.ToolStripMenuItem();
             FileNewMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,12 +73,12 @@
             EditDeleteMenu = new System.Windows.Forms.ToolStripMenuItem();
             ToolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             ToolsTestMenu = new System.Windows.Forms.ToolStripMenuItem();
-            ToolsScanMenu = new System.Windows.Forms.ToolStripMenuItem();
+            RelaysMenu = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ToolsOptionsMenu = new System.Windows.Forms.ToolStripMenuItem();
             HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
             AboutMenu = new System.Windows.Forms.ToolStripMenuItem();
-            RelaysMenu = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -261,8 +263,10 @@
             ToolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             ToolsTestMenu,
             RelaysMenu,
-            ToolsScanMenu,
             toolStripSeparator3,
+            this.ResetCameraMenu,
+            this.ResetRelaysMeu,
+            toolStripSeparator4,
             ToolsOptionsMenu});
             ToolsMenu.Name = "ToolsMenu";
             ToolsMenu.Size = new System.Drawing.Size(48, 20);
@@ -272,27 +276,26 @@
             // 
             ToolsTestMenu.Name = "ToolsTestMenu";
             ToolsTestMenu.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            ToolsTestMenu.Size = new System.Drawing.Size(152, 22);
-            ToolsTestMenu.Text = "&Test";
+            ToolsTestMenu.Size = new System.Drawing.Size(165, 22);
+            ToolsTestMenu.Text = "&Test Camera";
             ToolsTestMenu.Click += new System.EventHandler(this.ToolsTestMenu_Click);
             // 
-            // ToolsScanMenu
+            // RelaysMenu
             // 
-            ToolsScanMenu.Name = "ToolsScanMenu";
-            ToolsScanMenu.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            ToolsScanMenu.Size = new System.Drawing.Size(152, 22);
-            ToolsScanMenu.Text = "&Scan";
-            ToolsScanMenu.Click += new System.EventHandler(this.ToolsScanMenu_Click);
+            RelaysMenu.Name = "RelaysMenu";
+            RelaysMenu.Size = new System.Drawing.Size(165, 22);
+            RelaysMenu.Text = "Test &Relays";
+            RelaysMenu.Click += new System.EventHandler(this.RelaysMenu_Click);
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            toolStripSeparator3.Size = new System.Drawing.Size(162, 6);
             // 
             // ToolsOptionsMenu
             // 
             ToolsOptionsMenu.Name = "ToolsOptionsMenu";
-            ToolsOptionsMenu.Size = new System.Drawing.Size(152, 22);
+            ToolsOptionsMenu.Size = new System.Drawing.Size(165, 22);
             ToolsOptionsMenu.Text = "&Options...";
             ToolsOptionsMenu.Click += new System.EventHandler(this.ToolsOptionsMenu_Click);
             // 
@@ -307,16 +310,28 @@
             // AboutMenu
             // 
             AboutMenu.Name = "AboutMenu";
-            AboutMenu.Size = new System.Drawing.Size(152, 22);
+            AboutMenu.Size = new System.Drawing.Size(116, 22);
             AboutMenu.Text = "&About...";
             AboutMenu.Click += new System.EventHandler(this.AboutMenu_Click);
             // 
-            // RelaysMenu
+            // ResetCameraMenu
             // 
-            RelaysMenu.Name = "RelaysMenu";
-            RelaysMenu.Size = new System.Drawing.Size(152, 22);
-            RelaysMenu.Text = "&Relays";
-            RelaysMenu.Click += new System.EventHandler(this.RelaysMenu_Click);
+            this.ResetCameraMenu.Name = "ResetCameraMenu";
+            this.ResetCameraMenu.Size = new System.Drawing.Size(165, 22);
+            this.ResetCameraMenu.Text = "Reset Camera";
+            this.ResetCameraMenu.Click += new System.EventHandler(this.ResetCameraMenu_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new System.Drawing.Size(162, 6);
+            // 
+            // ResetRelaysMeu
+            // 
+            this.ResetRelaysMeu.Name = "ResetRelaysMeu";
+            this.ResetRelaysMeu.Size = new System.Drawing.Size(165, 22);
+            this.ResetRelaysMeu.Text = "Reset Relays";
+            this.ResetRelaysMeu.Click += new System.EventHandler(this.ResetRelaysMeu_Click);
             // 
             // Main
             // 
@@ -349,6 +364,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem FileOpenMenu;
         private MdiTabControl.TabControl Tabby;
+        private System.Windows.Forms.ToolStripMenuItem ResetCameraMenu;
+        private System.Windows.Forms.ToolStripMenuItem ResetRelaysMeu;
     }
 }
 

@@ -14,25 +14,30 @@ namespace RedCell.App.Graphics.SlideScan
         private System.Windows.Forms.Timer _timer;
         private bool _lampWasOn = false;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Projector"/> class.
+        /// </summary>
         public Projector()
         {
         }
-       
+
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
+        /// <returns>Task.</returns>
         public async Task Initialize()
         {
-            try
-            {
-                _timer =  new System.Windows.Forms.Timer();
-                _timer.Tick += Timer_Elapsed;
-                _timer.Interval = 90000;
-                await RelayBoard.InitializeAsync();
-            }
-            catch (RelayBoardException ex)
-            {
-                MessageBox.Show(ex.Message, "RelayBoardException", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            _timer =  new System.Windows.Forms.Timer();
+            _timer.Tick += Timer_Elapsed;
+            _timer.Interval = 90000;
+            await RelayBoard.InitializeAsync();
         }
 
+        /// <summary>
+        /// Handles the Elapsed event of the Timer control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         async void Timer_Elapsed(object sender, EventArgs e)
         {
             await FanOff(true);

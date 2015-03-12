@@ -138,14 +138,17 @@
   <metadata name="toolStripSeparator4.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <metadata name="toolStripSeparator2.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>122, 17</value>
-  </metadata>
   <metadata name="toolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>227, 17</value>
+  </metadata>
+  <metadata name="toolStrip6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>542, 17</value>
   </metadata>
   <metadata name="toolStrip5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>437, 17</value>
@@ -154,29 +157,26 @@
   <data name="LampButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKoSURBVDhPjZJrSBRhFIaPUWokCCllEt7SXSPrlyStlAQS
-        CXYzEwoSg/qjRAml2G0R6kcEQbCalualdFc3E1cFV4XwR0RlaeR1c3b2qmbeb+uOOG/fsAOyJtQDL/PN
-        nPOeOefw0Ua6S2nbdD0FrmhJIbyhREFLR921dGCuioL66slXTtsc0zPyc9VRpKk4umq2JeWrMPDELgw9
-        dc4YMwa5l8p3bh3FjVXTDjndm/dq2up6S1GW8v3GZfMLN5Y5QLB55OKBsXbYqw9/EfQUz1eQv2xbx9xy
-        49hwSVT1Yn+hgKlWYEYHzNV4NKMFpg2AuQJ8uaLdasg8wSw+HqcHH1Pz9ZvWV7G9oqkQovMeM+QDC7eB
-        RabZfIjjdyCaH8JZkzBqbrp8X62mLbKXSHrhmrMKrOUxVrEvHaIjDZg/xdpPAVaZllJZgbMQhzMwXqNY
-        shrOPZZGlu2eAmPtly44qsI58ZsCoi0GmNzL/h7CzEyTocDoPoh9SvAV4Qu/O05mexWQGGq9lWOrjPgg
-        9h4ELAHgm4h1wLRG4BvZ0+YHcUAJR20kx7VmFXiNIDFiLEgcLI8qcn1MmBEnToNv3g24g9kIO9k5CJhK
-        ZgVS2B7D9Xxn7nHZto5UcbmDwizVYUbRcoVt/gH4tmT0N6jYEu9C/JULuza6291Jh6TLJtu8sdXRdqGN
-        VA5dOIfRTDZ7Jfp1qcBEDpyNitnVdkqb7qBAOf1vpC4WGmiXuSzEsPYpAuDSsdjFFtijhL0ytNvVRJF/
-        LW8jYO0tN/qrusqSln7q08Hpz2NEfxHzzRHXpBhL8bpAmzJvCAgu0Txa+d7zGXabBaXPi9amWpQqOfxv
-        6tXkW6zROAeHTBgdG4dGU+QeeB27Rw7/H/FHkuLy8vJ+qNXqiavZ+Wfkzxsg+gMe1aThnTAMhwAAAABJ
-        RU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKmSURBVDhPjZJrSBRhFIaPUWokCCllEt7SXSPrlyQpJYFE
+        gt3MhILEoP4oUUIpdhui/kQQBKsZaV7K62biroK7CtKPiMrSyOvm7Ox9zbzf1l1x3r5hB2RVqAde5ps5
+        5z1zzuGj9fS8pG1TTRS8XE8Kz1tK8dTTUXcdHZitppD+JvKX0zbH8JwCXI0UbSiNrZ5pS//mGXxq9Qw/
+        s0/rsof4V8r37gZKcNbQDjndl26OtrreUYypYr9uwVjmxhIPeCxeuQTAqYe15vBXj5oShUoKlG1rGNtu
+        HBspi6mZG+A8mGwHphuA2VqvpuuBKQ1grIRQodCbNTknmMXP6/TiZ9Bev2l+Hd8nGh5CtN9jhiJg/jaw
+        wDRTBHHsDkTjY9hrkxzG1sv3OY62yF4i6YXX5habK+LMYn8WRFsmMHeKtZ8OrDAtZrACZyGOZGOsVrFo
+        1px7Io0s270FnPpLF2zVkbz4XQHREgdM7GV/D2NmpolwwLEPYr8SQmXk/J/Ok3k+BSSG22/lW6qiPop9
+        BwFTEIRWYh0wrRKEFva0BEAcVMJWF83z7bnFPiNIjOqKU4YqYkpcn5KmxfHTELS7AXcoG2EnO4cAk2ms
+        QDrbY6Ra6Co4LtvWkCoudVKEqSZCJ5qusM0/gNCRhoHmZLbEuxB/F8BaH9vj7qJD0mWTbb5YGmm7p4OS
+        bQ2RPBw5bPYqDDRkAOP5sLcoZlb0lDnVScFy+kakLuabaZexPEyz+jkK4LOw8IEtsFcJa1V4j6uVojcs
+        bz1g7S21BCZ3l6cu/lJngVefx6j6Iua0UdekGEvxuUCbMqcJCi1TPVr+0fsFVosJL1+UrE62KZPl8L9p
+        4si/VKWyDw0b4HCOQaVSuQffxO+Rw/9H4pHUhMLCwp8cx41fzSs6I39eB9FfAIik1EWe6c0AAAAASUVO
+        RK5CYII=
 </value>
   </data>
-  <metadata name="toolStrip6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>542, 17</value>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>122, 17</value>
   </metadata>
   <metadata name="toolStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>332, 17</value>
-  </metadata>
-  <metadata name="toolStripSeparator2.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
   </metadata>
   <data name="LiveViewButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

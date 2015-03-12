@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using RedCell.Devices;
 
 namespace RedCell.App.Graphics.SlideScan
 {
@@ -195,6 +197,40 @@ namespace RedCell.App.Graphics.SlideScan
             catch (TypeInitializationException)
             {
                 MessageBox.Show("Unable to initialize relay board.\r\nDid you install the FTDI driver?\r\nhttp://www.ftdichip.com/Drivers/D2XX.htm", "TypeInitializationException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the ResetCameraMenu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void ResetCameraMenu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Camera.Initialize();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Camera Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the ResetRelaysMeu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private async void ResetRelaysMeu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                await Task.Run(() => RelayBoard.Initialize(true));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Relay Board Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion

@@ -18,6 +18,13 @@ namespace CameraControl.Devices.Example
         private Timer _liveViewTimer = new Timer { Interval = 1000 / 15 };
 
         /// <summary>
+        /// Occurs when a photo is captured.
+        /// </summary>
+        public event PhotoCapturedEventHandler Captured;
+
+        public event CameraDisconnectedEventHandler Disconnected;
+
+        /// <summary>
         /// Gets or sets the camera device.
         /// </summary>
         /// <value>The camera device.</value>
@@ -27,16 +34,20 @@ namespace CameraControl.Devices.Example
         /// Initializes this instance.
         /// </summary>
         /// <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
-        public bool Initialize()
+        public async Task<bool> Initialize()
         {
-            ServiceProvider.Configure();
-            ServiceProvider.DeviceManager.UseExperimentalDrivers = false; // canon
-            if (ServiceProvider.DeviceManager.ConnectToCamera())
+            await Task.Run(() =>
             {
-                CameraDevice = ServiceProvider.DeviceManager.SelectedCameraDevice;
-                Initialize(CameraDevice);
-                return true;
-            }
+                ServiceProvider.Configure();
+                ServiceProvider.DeviceManager.UseExperimentalDrivers = false; // canon
+                if (ServiceProvider.DeviceManager.ConnectToCamera())
+                {
+                    CameraDevice = ServiceProvider.DeviceManager.SelectedCameraDevice;
+                    Initialize(CameraDevice);
+                    return true;
+                }
+                return false;
+            });
             return false;
         }
 
@@ -46,6 +57,11 @@ namespace CameraControl.Devices.Example
         /// <param name="device">The device.</param>
         public void Initialize(ICameraDevice device)
         {
+            ServiceProvider.Configure();
+            var dm = ServiceProvider.DeviceManager;
+            dm.UseExperimentalDrivers = false;
+            dm.ConnectToCamera();
+
             _liveViewTimer.Stop();
             _liveViewTimer.Tick += _liveViewTimer_Tick;
             CameraDevice = device;
@@ -60,14 +76,42 @@ namespace CameraControl.Devices.Example
         /// <param name="e">The <see cref="PhotoCapturedEventArgs"/> instance containing the event data.</param>
         void CameraDevice_PhotoCaptured(object sender, PhotoCapturedEventArgs e)
         {
+            try
+            {
+                e.CameraDevice.IsBusy = true;
+                e.Transfer(e.FileName);
+                ImageLocation = e.FileName;
+            }
+            finally
+            {
+                e.CameraDevice.IsBusy = false;
+            }
+            
+            if (Captured != null)
+                Captured(this, e);
         }
 
         /// <summary>
         /// Captures this instance.
         /// </summary>
-        public void Capture()
+        public new void Capture()
         {
-            CameraDevice.CapturePhoto();
+            try
+            {
+                if (Running)
+                    Stop();
+
+                CameraDevice.IsBusy = true;
+                CameraDevice.CaptureInSdRam = true;
+                // prevent use this mode if the camera not support it 
+                if (CameraDevice.GetCapability(CapabilityEnum.CaptureInRam))
+                    CameraDevice.CaptureInSdRam = false;
+                CameraDevice.CapturePhoto();
+            }
+            finally
+            {
+                CameraDevice.IsBusy = false;
+            }
         }
 
         /// <summary>
@@ -94,6 +138,9 @@ namespace CameraControl.Devices.Example
                 BeginInvoke(method);
             else
                 method.Invoke();
+
+            if (Disconnected != null)
+                Disconnected(this, e);
         }
 
         /// <summary>
@@ -103,7 +150,7 @@ namespace CameraControl.Devices.Example
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         void _liveViewTimer_Tick(object sender, EventArgs e)
         {
-            GetLiveView();
+           GetLiveView();
         }
 
         /// <summary>
@@ -128,7 +175,7 @@ namespace CameraControl.Devices.Example
         public async void Start()
         {
             await Task.Run(() => CameraDevice.StartLiveView());
- 
+
             MethodInvoker method = _liveViewTimer.Start;
             if (InvokeRequired)
                 BeginInvoke(method);

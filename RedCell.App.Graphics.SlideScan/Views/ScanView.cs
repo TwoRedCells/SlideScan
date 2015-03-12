@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using CameraControl.Devices.Classes;
 using RedCell.Devices;
 
 namespace RedCell.App.Graphics.SlideScan
@@ -19,6 +21,7 @@ namespace RedCell.App.Graphics.SlideScan
     {
         private volatile bool _stop;
         private Projector _projector;
+        private string filePrefix;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScanView"/> class.
@@ -41,12 +44,10 @@ namespace RedCell.App.Graphics.SlideScan
 
             try
             {
-                Camera.Initialize();
+                await LiveView.Initialize();
                 CameraLabel.BackColor = Color.Green;
-                LiveView.CameraDevice = Camera.GetDevice();
-                LiveView.Initialize();
             }
-            catch
+            catch (Exception ex)
             {
                 CameraLabel.BackColor = Color.Red;
             }
@@ -69,6 +70,10 @@ namespace RedCell.App.Graphics.SlideScan
         /// <value>The set.</value>
         public Set Set { get; set; }
 
+        /// <summary>
+        /// Gets or sets the index of the current.
+        /// </summary>
+        /// <value>The index of the current.</value>
         private int CurrentIndex
         {
             get { return int.Parse(CurrentSlide.Text); }
@@ -147,17 +152,6 @@ namespace RedCell.App.Graphics.SlideScan
         }
 
         /// <summary>
-        /// Handles the Click event of the ManualButton control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ManualButton_Click(object sender, EventArgs e)
-        {
-            Camera.Filename = string.Format("{0}_{1:0000}.jpg", Set.Name, CurrentIndex);
-            Camera.Capture();
-        }
-
-        /// <summary>
         /// Handles the Click event of the AutomaticButton control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -203,11 +197,11 @@ namespace RedCell.App.Graphics.SlideScan
             _stop = true;
         }
 
-        private async void LampButton_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Handles the Click event of the LoadButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private async void LoadButton_Click(object sender, EventArgs e)
         {
             if (LoadButton.Checked)
@@ -216,7 +210,12 @@ namespace RedCell.App.Graphics.SlideScan
                 await _projector.Load();
         }
 
-        private async void LampButton_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the Click event of the LampButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private async void LampButton_Click(object sender, EventArgs e)
         {
             if (LampButton.Checked)
                 await _projector.LampOn();
@@ -227,10 +226,20 @@ namespace RedCell.App.Graphics.SlideScan
             }
         }
 
+        /// <summary>
+        /// Handles the Validated event of the CurrentSlide control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void CurrentSlide_Validated(object sender, EventArgs e)
         {
         }
 
+        /// <summary>
+        /// Handles the Validating event of the CurrentSlide control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="CancelEventArgs"/> instance containing the event data.</param>
         private void CurrentSlide_Validating(object sender, CancelEventArgs e)
         {
             int value;
@@ -238,14 +247,68 @@ namespace RedCell.App.Graphics.SlideScan
                 CurrentSlide.Text = "0";
         }
 
-        private void ManualButton_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the 1 event of the ManualButton_Click control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void ManualButton_Click(object sender, EventArgs e)
         {
-            Camera.Capture();
+            try { LiveView.Capture(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Capture Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CameraLabel.BackColor = Color.Red;
+            }
         }
 
+        /// <summary>
+        /// Handles the Click event of the LiveViewButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void LiveViewButton_Click(object sender, EventArgs e)
         {
-            LiveView.Start();
+            try 
+            {
+                if (LiveViewButton.Checked)
+                    LiveView.Start();
+                else
+                    LiveView.Stop();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Capture Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Captured event of the LiveView control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="PhotoCapturedEventArgs"/> instance containing the event data.</param>
+        private async void LiveView_Captured(object sender, PhotoCapturedEventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                //try
+                //{
+                //    string tempFile = Path.GetTempFileName();
+
+                //    if (File.Exists(tempFile))
+                //        File.Delete(tempFile);
+
+                //    e.CameraDevice.TransferFile(e.Handle, tempFile);
+                //    File.Copy(tempFile, filePrefix + e.FileName, true);
+
+                //    if (File.Exists(tempFile))
+                //        File.Delete(tempFile);
+                //}
+                //finally
+                //{
+                //    e.CameraDevice.IsBusy = false;
+                //}
+            });
         }
     }
 }

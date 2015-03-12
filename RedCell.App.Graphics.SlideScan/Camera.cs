@@ -58,22 +58,36 @@ namespace RedCell.App.Graphics.SlideScan
             }
         }
 
+        /// <summary>
+        /// capture as an asynchronous operation.
+        /// </summary>
+        /// <returns>Task.</returns>
         public async static Task CaptureAsync()
         {
             await Task.Run((Action)Capture);
 
         }
 
-        public static void Initialize()
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
+        public async static Task Initialize()
         {
-            ServiceProvider.Configure();
-            var dm = ServiceProvider.DeviceManager;
-            dm.UseExperimentalDrivers = false;
-            dm.ConnectToCamera();
-            dm.PhotoCaptured += DeviceManager_PhotoCaptured;
-            Filename = "test.jpg";
+            await Task.Run(() =>
+            {
+                ServiceProvider.Configure();
+                var dm = ServiceProvider.DeviceManager;
+                dm.UseExperimentalDrivers = false;
+                dm.ConnectToCamera();
+                dm.PhotoCaptured += DeviceManager_PhotoCaptured;
+                Filename = "test.jpg";
+            });
         }
 
+        /// <summary>
+        /// Gets or sets the filename.
+        /// </summary>
+        /// <value>The filename.</value>
         public static string Filename { get; set; }
 
         public static void SetIso(string iso)
