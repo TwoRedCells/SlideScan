@@ -43,16 +43,16 @@
             this.ProjectorLabel = new System.Windows.Forms.ToolStripTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.FilesGrid = new System.Windows.Forms.DataGridView();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.SetName = new System.Windows.Forms.ToolStripTextBox();
-            this.Operator = new System.Windows.Forms.ToolStripTextBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.ImageCount = new System.Windows.Forms.ToolStripTextBox();
             this.CarouselSize = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStrip5 = new System.Windows.Forms.ToolStrip();
-            this.LampButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip6 = new System.Windows.Forms.ToolStrip();
             this.LoadButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip5 = new System.Windows.Forms.ToolStrip();
+            this.LampButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.SetName = new System.Windows.Forms.ToolStripTextBox();
+            this.Operator = new System.Windows.Forms.ToolStripTextBox();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.BackButton = new System.Windows.Forms.ToolStripButton();
             this.CurrentSlide = new System.Windows.Forms.ToolStripTextBox();
@@ -78,10 +78,10 @@
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FilesGrid)).BeginInit();
-            this.toolStrip2.SuspendLayout();
             this.toolStrip3.SuspendLayout();
-            this.toolStrip5.SuspendLayout();
             this.toolStrip6.SuspendLayout();
+            this.toolStrip5.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.toolStrip4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LiveView)).BeginInit();
             this.SuspendLayout();
@@ -142,7 +142,7 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.LiveView);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pictureBox1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.FilesGrid);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1152, 480);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1152, 455);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -164,7 +164,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CameraLabel,
             this.ProjectorLabel});
-            this.toolStrip1.Location = new System.Drawing.Point(21, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(21, 25);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(119, 25);
             this.toolStrip1.TabIndex = 0;
@@ -192,7 +192,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(240, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(912, 480);
+            this.pictureBox1.Size = new System.Drawing.Size(912, 455);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -203,34 +203,8 @@
             this.FilesGrid.Dock = System.Windows.Forms.DockStyle.Left;
             this.FilesGrid.Location = new System.Drawing.Point(0, 0);
             this.FilesGrid.Name = "FilesGrid";
-            this.FilesGrid.Size = new System.Drawing.Size(240, 480);
+            this.FilesGrid.Size = new System.Drawing.Size(240, 455);
             this.FilesGrid.TabIndex = 0;
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            asfasdf,
-            this.SetName,
-            toolStripSeparator1,
-            toolStripLabel2,
-            this.Operator});
-            this.toolStrip2.Location = new System.Drawing.Point(72, 50);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(415, 25);
-            this.toolStrip2.TabIndex = 1;
-            // 
-            // SetName
-            // 
-            this.SetName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SetName.Name = "SetName";
-            this.SetName.Size = new System.Drawing.Size(200, 25);
-            // 
-            // Operator
-            // 
-            this.Operator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Operator.Name = "Operator";
-            this.Operator.Size = new System.Drawing.Size(100, 25);
             // 
             // toolStrip3
             // 
@@ -261,6 +235,26 @@
             this.CarouselSize.Text = "120";
             this.CarouselSize.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // toolStrip6
+            // 
+            this.toolStrip6.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LoadButton});
+            this.toolStrip6.Location = new System.Drawing.Point(83, 25);
+            this.toolStrip6.Name = "toolStrip6";
+            this.toolStrip6.Size = new System.Drawing.Size(65, 25);
+            this.toolStrip6.TabIndex = 5;
+            // 
+            // LoadButton
+            // 
+            this.LoadButton.CheckOnClick = true;
+            this.LoadButton.Image = global::RedCell.App.Graphics.SlideScan.Properties.Resources.eject_128;
+            this.LoadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LoadButton.Name = "LoadButton";
+            this.LoadButton.Size = new System.Drawing.Size(53, 22);
+            this.LoadButton.Text = "Load";
+            this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            // 
             // toolStrip5
             // 
             this.toolStrip5.Dock = System.Windows.Forms.DockStyle.None;
@@ -281,25 +275,31 @@
             this.LampButton.Text = "Lamp";
             this.LampButton.Click += new System.EventHandler(this.LampButton_Click);
             // 
-            // toolStrip6
+            // toolStrip2
             // 
-            this.toolStrip6.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LoadButton});
-            this.toolStrip6.Location = new System.Drawing.Point(83, 25);
-            this.toolStrip6.Name = "toolStrip6";
-            this.toolStrip6.Size = new System.Drawing.Size(65, 25);
-            this.toolStrip6.TabIndex = 5;
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            asfasdf,
+            this.SetName,
+            toolStripSeparator1,
+            toolStripLabel2,
+            this.Operator});
+            this.toolStrip2.Location = new System.Drawing.Point(72, 50);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(415, 25);
+            this.toolStrip2.TabIndex = 1;
             // 
-            // LoadButton
+            // SetName
             // 
-            this.LoadButton.CheckOnClick = true;
-            this.LoadButton.Image = global::RedCell.App.Graphics.SlideScan.Properties.Resources.eject_128;
-            this.LoadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(53, 22);
-            this.LoadButton.Text = "Load";
-            this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            this.SetName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SetName.Name = "SetName";
+            this.SetName.Size = new System.Drawing.Size(200, 25);
+            // 
+            // Operator
+            // 
+            this.Operator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Operator.Name = "Operator";
+            this.Operator.Size = new System.Drawing.Size(100, 25);
             // 
             // toolStrip4
             // 
@@ -404,11 +404,12 @@
             this.LiveView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LiveView.Location = new System.Drawing.Point(240, 0);
             this.LiveView.Name = "LiveView";
-            this.LiveView.Size = new System.Drawing.Size(912, 480);
+            this.LiveView.Size = new System.Drawing.Size(912, 455);
             this.LiveView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.LiveView.TabIndex = 2;
             this.LiveView.TabStop = false;
             this.LiveView.Captured += new CameraControl.Devices.Classes.PhotoCapturedEventHandler(this.LiveView_Captured);
+
             // 
             // ScanView
             // 
@@ -429,14 +430,14 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FilesGrid)).EndInit();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
-            this.toolStrip5.ResumeLayout(false);
-            this.toolStrip5.PerformLayout();
             this.toolStrip6.ResumeLayout(false);
             this.toolStrip6.PerformLayout();
+            this.toolStrip5.ResumeLayout(false);
+            this.toolStrip5.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.toolStrip4.ResumeLayout(false);
             this.toolStrip4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LiveView)).EndInit();

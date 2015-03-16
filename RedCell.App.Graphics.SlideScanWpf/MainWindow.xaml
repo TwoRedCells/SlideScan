@@ -1,0 +1,55 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Custom="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" xmlns:SlideScanWpf="clr-namespace:RedCell.App.Graphics.SlideScanWpf" x:Class="RedCell.App.Graphics.SlideScan.MainWindow"
+        Title="MainWindow" Height="768" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Ribbon ShowQuickAccessToolBarOnTop="False" Grid.Row="0">
+            <RibbonTab Header="Home" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" >
+                <RibbonGroup Header="Set" Height="88" Margin="0" HorizontalContentAlignment="Right">
+                    <RibbonTextBox Label="Name" Text="" TextAlignment="Left" TextBoxWidth="100" Margin="-1"/>
+                    <RibbonTextBox Label="Operator" Text="" TextAlignment="Left" TextBoxWidth="100" Margin="-1"/>
+                    <RibbonTextBox Label="Subject" Text="" TextAlignment="Left" TextBoxWidth="100" Margin="-1"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Projector" Height="88" Margin="0" VerticalAlignment="Top">
+                    <RibbonToggleButton x:Name="FanToggleButton" Label="Fan" Click="FanToggleButton_Click" SmallImageSource="Assets/095409-rounded-glossy-black-icon-signs-fan3.png" LargeImageSource="Assets/095409-rounded-glossy-black-icon-signs-fan3.png" />
+                    <RibbonToggleButton x:Name="LampToggleButton" Label="Lamp" Click="LampToggleButton_Click" SmallImageSource="Assets/bulb.png" LargeImageSource="Assets/bulb.png"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Camera" Height="88" Margin="0" VerticalAlignment="Top">
+                    <RibbonControlGroup>
+                        <RibbonToggleButton x:Name="LiveViewButton" Label="Live View" LargeImageSource="Assets/slidemount.jpg" SmallImageSource="Assets/slidemount.jpg" Click="LiveViewButton_Click"/>
+                        <RibbonToggleButton x:Name="FocusButton" Label="Focus" LargeImageSource="Assets/focus.png" SmallImageSource="Assets/slidemount.jpg" Click="LiveViewButton_Click" Checked="FocusButton_Checked"/>
+                    </RibbonControlGroup>
+                </RibbonGroup>
+                <RibbonGroup Header="Carousel" Height="88" Margin="0" VerticalAlignment="Top">
+                    <RibbonToggleButton x:Name="LoadButton" Label="Load Unload" Width="60" LargeImageSource="Assets/eject-128.png" SmallImageSource="Assets/eject-128.png" Click="LoadButton_Click" Checked="LoadButton_Checked"/>
+                    <RibbonButton x:Name="PreviousButton" Label="Previous" Width="60" LargeImageSource="Assets/rewind-128.png" SmallImageSource="Assets/rewind-128.png" Click="PreviousButton_Click" />
+                    <RibbonControl>
+                        <StackPanel Orientation="Vertical">
+                            <RibbonTextBox x:Name="CarouselPosition" TextBoxWidth="40" Text="001" TextAlignment="Center" Margin="0,0,0,0"/>
+                            <RibbonTextBox x:Name="CarouselCapacity" TextBoxWidth="40" Text="120" TextAlignment="Center" Margin="0,0,0,0"/>
+                            <RibbonTwoLineText Text="Position"/>
+                        </StackPanel>
+                        
+                    </RibbonControl>
+                    <RibbonButton x:Name="NextButton" Label="Next" Width="60" LargeImageSource="Assets/fast_forward-128.png" SmallImageSource="Assets/fast_forward-128.png" Click="NextButton_Click" />
+                </RibbonGroup>
+                <RibbonGroup Header="Scan" Height="88" Margin="0">
+                    <RibbonButton x:Name="SingleCaptureButton" LargeImageSource="Assets/play-128.png" Label="Single" SmallImageSource="Assets/play-128.png" Click="SingleCaptureButton_Click"/>
+                    <RibbonButton x:Name="AutomaticCaptureButton" LargeImageSource="Assets/record-128.png" Label="Automatic" SmallImageSource="Assets/record-128.png"/>
+                    <RibbonToggleButton x:Name="DirectionButton"  Label="Direction" SmallImageSource="Assets/shuffle-128.png" OverridesDefaultStyle="True"/>
+                    <RibbonTextBox x:Name="SlideDelay" Label="Delay" TextBoxWidth="40" Text="1000" TextAlignment="Center" Margin="-1"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Reset" Height="88" Margin="0">
+                    <RibbonButton x:Name="ResetRelaysButton" Label="Relays" SmallImageSource="Assets/reset.png" Click="ResetRelaysButton_Click" HorizontalAlignment="Center" />
+                    <RibbonButton x:Name="ResetCameraButton" Label="Camera" SmallImageSource="Assets/reset.png"  Click="ResetCameraButton_Click"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        <SlideScanWpf:LiveView x:Name="LiveView" Grid.Row="1"/>
+    </Grid>
+</Window>
